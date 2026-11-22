@@ -1,0 +1,275 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --notely-accent: #8950F5;
+  --notely-accent-deep: #7040E8;
+  --notely-accent-light: #F0E9FF;
+  --notely-bg: #FFFFFF;
+  --notely-bg-secondary: #F8F7FB;
+  --notely-card: #FFFFFF;
+  --notely-text: #24232B;
+  --notely-text-secondary: #92909D;
+  --notely-border: #ECEAF1;
+}
+
+.dark {
+  --notely-bg: #0E0D14;
+  --notely-bg-secondary: #15141E;
+  --notely-card: #1B1A26;
+  --notely-text: #F4F3F8;
+  --notely-text-secondary: #92909D;
+  --notely-border: #2A2838;
+}
+
+html,
+body {
+  font-family: 'Plus Jakarta Sans', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--notely-bg);
+  color: var(--notely-text);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.font-editorial {
+  font-family: 'Lora', Georgia, serif;
+}
+
+.font-mono-tabular {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Soft claymorphism & elevation matching Notely reference */
+.notely-card {
+  background-color: var(--notely-card);
+  border: 1px solid var(--notely-border);
+  box-shadow: 0 4px 20px -6px rgba(36, 35, 43, 0.06), 0 1px 3px rgba(36, 35, 43, 0.03);
+}
+
+.dark .notely-card {
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.45);
+}
+
+/* Hide scrollbars cleanly for horizontal carousels and toolbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* TipTap / ProseMirror rich document styles */
+.notely-prose {
+  outline: none;
+  line-height: 1.65;
+  word-break: break-word;
+}
+
+.notely-prose p {
+  margin-top: 0.4em;
+  margin-bottom: var(--notely-p-spacing, 0.6em);
+}
+
+.notely-prose p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #92909D;
+  pointer-events: none;
+  height: 0;
+}
+
+.notely-prose h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 0.8em;
+  margin-bottom: 0.35em;
+  letter-spacing: -0.02em;
+}
+
+.notely-prose h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 0.75em;
+  margin-bottom: 0.3em;
+}
+
+.notely-prose h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 0.65em;
+  margin-bottom: 0.25em;
+}
+
+.notely-prose h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 0.55em;
+  margin-bottom: 0.2em;
+}
+
+.notely-prose h5 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+}
+
+.notely-prose h6 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-top: 0.45em;
+  margin-bottom: 0.2em;
+}
+
+.notely-prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0.5em 0;
+}
+
+.notely-prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 0.5em 0;
+}
+
+.notely-prose ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0.25rem;
+}
+
+.notely-prose ul[data-type="taskList"] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin: 0.35rem 0;
+}
+
+.notely-prose ul[data-type="taskList"] li > label {
+  margin-top: 0.22rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.notely-prose ul[data-type="taskList"] li > label input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--notely-accent);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.notely-prose ul[data-type="taskList"] li[data-checked="true"] > div {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.notely-prose blockquote {
+  border-left: 3px solid var(--notely-accent);
+  padding-left: 1rem;
+  margin: 0.75rem 0;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.notely-prose pre {
+  background: #F4F3F8;
+  color: #24232B;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+
+.dark .notely-prose pre {
+  background: #14131D;
+  color: #E9E7F2;
+}
+
+.notely-prose hr {
+  border: none;
+  border-top: 1.5px solid #ECEAF1;
+  margin: 1.25rem 0;
+}
+
+.dark .notely-prose hr {
+  border-top-color: #2F2D3D;
+}
+
+.notely-prose a {
+  color: var(--notely-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.notely-prose table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin: 1rem 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.notely-prose table td,
+.notely-prose table th {
+  min-width: 2.5rem;
+  border: 1px solid #DFDCE8;
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.dark .notely-prose table td,
+.dark .notely-prose table th {
+  border-color: #323042;
+}
+
+.notely-prose table th {
+  font-weight: 600;
+  text-align: left;
+  background-color: #F4F3F8;
+}
+
+.dark .notely-prose table th {
+  background-color: #252334;
+}
+
+.notely-prose .selectedCell:after {
+  z-index: 2;
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(137, 80, 245, 0.14);
+  pointer-events: none;
+}
+
+.notely-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+}
